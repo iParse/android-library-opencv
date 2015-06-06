@@ -1,0 +1,71 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:1.2.3'
+    }
+}
+
+apply plugin: 'com.android.library'
+apply plugin: 'maven-publish'
+
+android {
+    compileSdkVersion 21
+    buildToolsVersion '22.0.1'
+
+    defaultConfig {
+        minSdkVersion 8
+        targetSdkVersion 8
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+        }
+    }
+
+    libraryVariants.all { variant ->
+        variant.outputs.each { output ->
+            def outputFile = output.outputFile
+            if (outputFile != null && outputFile.name.endsWith('.aar')) {
+                def fileName = "android-library-opencv-release.aar"
+                output.outputFile = new File(outputFile.parent, fileName)
+            }
+        }
+    }
+}
+
+repositories {
+    jcenter()
+}
+
+publishing {
+    def aarFile = file('build/outputs/aar/android-library-opencv-release.aar')
+    def build = System.getProperty("BUILD_NUMBER") ?: "0"
+    
+    artifacts {
+        archives aarFile
+    }
+    repositories {
+        maven {
+            url 'https://build.iparse.com:8443/artifactory/libs-release-local'
+            credentials {
+        username "${iparseMavenUsername}"
+            password "${iparseMavenPassword}"
+      }
+        }
+    }
+    
+    publications {
+        maven(MavenPublication) {
+            groupId = 'com.iparse.android'
+            artifactId = 'library-opencv'
+            version = "2.4.8"
+            
+            artifact aarFile
+        }
+    }
+}

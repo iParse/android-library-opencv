@@ -6,7 +6,7 @@ In Android Stuidio's build.gradle project file, add the following elements to yo
 
 ```
   repositories {
-    maven { url 'https://raw.github.com/iParse/android-library-opencv/releases' }
+    maven { url 'https://raw.github.com/iParse/android-library-opencv/master/releases' }
   }
   
   dependencies {

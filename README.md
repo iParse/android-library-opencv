@@ -2,7 +2,7 @@
 
 A Maven repository source of the Android Opencv library.
 
-In Android Stuidio's build.gradle project file, add the following elements to your existing list of repositories and compile dependencies. Your project may have the repositories listed in a different build script than the dependencies, so add these where appropriate.
+In Android Studio's build.gradle project file, add the following elements to your existing list of repositories and compile dependencies. Your project may have the repositories listed in a different build script than the dependencies, so add these where appropriate.
 
 ```
   repositories {

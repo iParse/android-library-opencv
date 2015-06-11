@@ -20,6 +20,11 @@ android {
         targetSdkVersion 8
     }
 
+    // proceed even if lint fails
+    lintOptions {
+        abortOnError false
+    }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -51,11 +56,7 @@ publishing {
     }
     repositories {
         maven {
-            url 'https://build.iparse.com:8443/artifactory/libs-release-local'
-            credentials {
-        username "${iparseMavenUsername}"
-            password "${iparseMavenPassword}"
-      }
+            url "file://$buildDir/../../releases"
         }
     }
     

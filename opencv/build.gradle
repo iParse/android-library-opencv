@@ -63,7 +63,7 @@ publishing {
     publications {
         maven(MavenPublication) {
             groupId = 'com.iparse.android'
-            artifactId = 'library-opencv'
+            artifactId = 'opencv'
             version = "2.4.8"
             
             artifact aarFile

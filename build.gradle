@@ -12,7 +12,7 @@ allprojects {
     repositories {
         jcenter()
         maven {
-            url 'https://build.iparse.com:8443/artifactory/libs-release-local'
+            url 'https://build.iparse.com/artifactory/libs-release-local'
             credentials {
                 username "${iparseMavenUsername}"
                 password "${iparseMavenPassword}"

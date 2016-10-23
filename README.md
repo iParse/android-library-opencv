@@ -10,6 +10,6 @@ In Android Studio's build.gradle project file, add the following elements to you
   }
   
   dependencies {
-    compile 'com.iparse.android:opencv:2.4.8'
+    compile 'com.iparse.android:opencv:2.4.13.1'
   }
 ```

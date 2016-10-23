@@ -4,7 +4,8 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:1.2.3'
+        //classpath 'com.android.tools.build:gradle:1.2.3'
+        classpath 'com.android.tools.build:gradle:2.2.0'
     }
 }
 
@@ -50,7 +51,7 @@ repositories {
 publishing {
     def aarFile = file('build/outputs/aar/android-library-opencv-release.aar')
     def build = System.getProperty("BUILD_NUMBER") ?: "0"
-    
+
     artifacts {
         archives aarFile
     }
@@ -59,13 +60,13 @@ publishing {
             url "file://$buildDir/../../releases"
         }
     }
-    
+
     publications {
         maven(MavenPublication) {
             groupId = 'com.iparse.android'
             artifactId = 'opencv'
-            version = "2.4.8"
-            
+            version = "2.4.13.1"
+
             artifact aarFile
         }
     }
